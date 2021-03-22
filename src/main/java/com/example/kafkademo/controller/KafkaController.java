@@ -18,4 +18,9 @@ public class KafkaController {
         kafkaProducer.sendMessage(topic, msg);
     }
 
+    @GetMapping("/transaction")
+    public void sendTran(){
+        kafkaProducer.sendTransaction();
+    }
+
 }

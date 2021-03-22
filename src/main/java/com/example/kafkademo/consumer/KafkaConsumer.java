@@ -11,24 +11,24 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = {"topic1"})
     public void onMessageTopic1(ConsumerRecord record){
-//        log.info("topic: " + record.topic());
+        log.info("topic: " + record.topic());
 //        log.info("partition:" + record.partition());
 //        log.info(record.offset()+"");
-//        log.info(record.value()+"");
-        System.out.println("topic: " + record.topic());
-        System.out.println("value" + record.value());
-        System.out.println("header:" + record.headers());
+        log.info("value: " + record.value());
+//        System.out.println("topic: " + record.topic());
+//        System.out.println("value" + record.value());
+//        System.out.println("header:" + record.headers());
     }
 
     @KafkaListener(topics = {"topic2"})
     public void onMessageTopic2(ConsumerRecord record){
-//        log.info("topic: " + record.topic());
+        log.info("topic: " + record.topic());
 //        log.info("partition:" + record.partition());
 //        log.info(record.offset()+"");
-//        log.info(record.value()+"");
-        System.out.println("topic: " + record.topic());
-        System.out.println("value: " + record.value());
-        System.out.println("header: " + record.headers());
+        log.info("value" + record.value());
+//        System.out.println("topic: " + record.topic());
+//        System.out.println("value: " + record.value());
+//        System.out.println("header: " + record.headers());
     }
 
 }
