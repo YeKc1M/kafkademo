@@ -1,5 +1,6 @@
 package com.example.kafkademo.consumer;
 
+import com.example.kafkademo.Outer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -29,6 +30,13 @@ public class KafkaConsumer {
 //        System.out.println("topic: " + record.topic());
 //        System.out.println("value: " + record.value());
 //        System.out.println("header: " + record.headers());
+    }
+
+    @KafkaListener(topics = {"obj"})
+    public void obj(ConsumerRecord record){
+        log.info(record.value().toString());
+//        Outer outer = (Outer) record.value();
+//        log.info(outer.toString());
     }
 
 }

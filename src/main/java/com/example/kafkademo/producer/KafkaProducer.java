@@ -1,5 +1,6 @@
 package com.example.kafkademo.producer;
 
+import com.example.kafkademo.Outer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,7 +14,7 @@ public class KafkaProducer {
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void sendMessage(String topic, String msg) {
+    public void sendMessage(String topic, Object msg) {
         kafkaTemplate.send(topic, msg).addCallback(success -> {
             log.info(success.getRecordMetadata().topic());
             log.info(success.getRecordMetadata().offset() + "");
@@ -22,6 +23,10 @@ public class KafkaProducer {
             log.info("send fail");
             log.info(failure.getMessage());
         });
+    }
+
+    public void sendOuter(Outer outer){
+        kafkaTemplate.send("obj", outer);
     }
 
     @Transactional(rollbackFor = RuntimeException.class)
